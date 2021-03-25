@@ -39,7 +39,7 @@ function updateGame(updateText) {
 
 	if (checkDead()) {
 		PLAYING = false;
-		document.getElementById("output").innerHTML = `You died... your score was ${length}`;
+		document.getElementById("output").innerHTML = `You died... your score was ${length-2}`;
 		setTimeout(reset, 1000);
 		return;
 	}
