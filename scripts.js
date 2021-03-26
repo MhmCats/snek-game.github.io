@@ -1,14 +1,10 @@
 const GRIDSIZE = 25; 
-
 var PLAYING = true;
 
+var foodPos = [400, 225]
 var x = 225;
 var y = 225;
-
-var foodPos = [400, 225]
-
 var direction = null;
-
 var length = 2;
 var positions = [[200, 225], [175, 225]];
 
@@ -95,7 +91,6 @@ function movement() {
 				} else {
 					y -= GRIDSIZE;
 				}
-				updateGame(true);
 				break;
 			case "d":
 				if (y == canvas.width-GRIDSIZE) {
@@ -103,7 +98,6 @@ function movement() {
 				} else {
 					y += GRIDSIZE;
 				}
-				updateGame(true);
 				break;
 			case "l":
 				if (x == 0) {
@@ -111,7 +105,6 @@ function movement() {
 				} else {
 					x -= GRIDSIZE;
 				}
-				updateGame(true);
 				break;
 			case "r":
 				if (x == canvas.width-GRIDSIZE) {
@@ -119,7 +112,6 @@ function movement() {
 				} else {
 					x += GRIDSIZE;
 				}
-				updateGame(true);
 				break;
 			default:
 				break;
@@ -128,7 +120,9 @@ function movement() {
 }
 
 function keydownHandler(event) {
-	if(!PLAYING){return;}
+	if(!PLAYING){
+		return;
+	}
 	switch (event.key){
 		case "ArrowDown":
 			if (!(direction == "u")) {
@@ -159,5 +153,12 @@ window.addEventListener("keydown", function (event) { keydownHandler(event) });
 
 window.onload = function () {
 	updateGame(false);
-	setInterval(movement, 100);
+	setInterval(function () {
+		movement();
+		if (PLAYING == true) {
+			if (direction == "r" || direction == "l" || direction == "u" || direction == "d") {
+				updateGame(true);
+			}
+		}
+	}, 100);
 }
