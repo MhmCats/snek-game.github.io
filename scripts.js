@@ -51,7 +51,7 @@ function reset() {
 	x = 225;
 	y = 225;
 	foodPos = [400, 225]
-	direction = null;
+	direction = "r";
 	length = 2;
 	positions = [[200, 225], [175, 225]];
 	updateGame(false);
