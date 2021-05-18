@@ -1,6 +1,6 @@
 const GRIDSIZE = 25; 
 var PLAYING = true;
-var takeInput = true;
+
 var foodPos = [400, 225]
 var x = 225;
 var y = 225;
@@ -44,7 +44,6 @@ function updateGame(updateText) {
 		length ++;
 		foodPos = generateFood();
 	}
-	takeInput = true;
 }
 
 function reset() {
@@ -121,7 +120,7 @@ function movement() {
 }
 
 function keydownHandler(event) {
-	if(!PLAYING || !takeInput){
+	if(!PLAYING){
 		return;
 	}
 	switch (event.key){
@@ -148,7 +147,8 @@ function keydownHandler(event) {
 		default:
 			break;
 	}
-	takeInput = false;
+	movement();
+	updateGame(true);
 }
 
 window.addEventListener("keydown", function (event) { keydownHandler(event) });
