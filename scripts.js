@@ -4,7 +4,7 @@ var PLAYING = true;
 var foodPos = [400, 225]
 var x = 225;
 var y = 225;
-var direction = null;
+var direction = "r";
 var length = 2;
 var positions = [[200, 225], [175, 225]];
 
@@ -162,5 +162,5 @@ window.onload = function () {
 				updateGame(true);
 			}
 		}
-	}, 100);
+	}, 100 - length);
 }
